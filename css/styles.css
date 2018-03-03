@@ -7,21 +7,11 @@ td {
 }
 
 .container {
-  margin-top: 30px;
+  margin-top: 7em;
 }
 
-.checkOff {
-  cursor: pointer;
-  font-size: 1.2em;
-  text-align: center;
-  width: 3%;
-}
-
-
-.deleteFromTable {
-  cursor: pointer;
-  text-align: center;
-  width: 10%;
+.hidden {
+  display: none;
 }
 
 .prioritize {
@@ -30,8 +20,4 @@ td {
 
 .strike {
   text-decoration: line-through;
-}
-
-.checkOff:hover, .deleteFromTable:hover {
-  color: #C70E0E;
 }
