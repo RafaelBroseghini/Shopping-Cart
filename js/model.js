@@ -48,9 +48,6 @@ class Cart extends Subject {
     this._items.splice(this._items.indexOf(elem), 1)
     this.publish("Deleted Item", this)
   }
-
 }
-
-
 
 var shoppingCart = new Cart();

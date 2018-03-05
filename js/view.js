@@ -6,17 +6,6 @@ class View {
     this._model = model
   }
 
-  // add2List(item) {
-  //     this._model.addItem(item)
-  //     //Fire up functions in model.
-  //     // this._model.publish("Added Item", this._model)
-  //     console.log(item);
-  // }
-
-  // alrtMe() {
-  //   alert("Hello World!")
-  // }
-
   colorByPriority() {
     let colorPriorities = document.querySelectorAll(".prioritize");
 
@@ -25,9 +14,12 @@ class View {
         i.parentElement.classList.add("alert-danger")
       } else if (i.textContent === "2") {
         i.parentElement.classList.add("alert-warning")
-      } else if (i.textContent === "1"){
+      } else {
         i.parentElement.classList.add("alert-success")
       }
+      // } else if (i.textContent === "1"){
+      //   i.parentElement.classList.add("alert-success")
+      // }
     }
   }
 
@@ -72,8 +64,8 @@ class View {
   }
 }
 
-
 var view = new View(shoppingCart);
+
 
 //subscribe to _model
 view._model.subscribe(view.redrawTable)

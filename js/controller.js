@@ -1,3 +1,5 @@
+// var shoppingCart = new Cart();
+
 
 function clickedOn() {
   let name      = document.querySelector("#prodName").value,
