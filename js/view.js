@@ -17,9 +17,6 @@ class View {
       } else {
         i.parentElement.classList.add("alert-success")
       }
-      // } else if (i.textContent === "1"){
-      //   i.parentElement.classList.add("alert-success")
-      // }
     }
   }
 
@@ -29,7 +26,7 @@ class View {
 
     tbBody.textContent = "";
 
-    for(var product of scope._items){
+    for(var product of scope.items){
       let row = document.createElement("tr")
       for(var property in product){
         if (property == "_purchased") {
@@ -39,13 +36,13 @@ class View {
           cb.onclick = checkedBox;
           rowCol.appendChild(cb)
           row.appendChild(rowCol)
+          cb.value = product["_id"]
         } else if (property == "_id") {
-          cb.value = product[property]
           let rowCol = document.createElement("td")
           rowCol.className = "hidden"
           rowCol.textContent = product[property]
           row.appendChild(rowCol)
-        } else if (property == "_priority") {
+        } else if (property == "priority") {
           let rowCol = document.createElement("td")
           rowCol.className = "prioritize"
           rowCol.textContent = product[property]
@@ -67,5 +64,5 @@ class View {
 var view = new View(shoppingCart);
 
 
-//subscribe to _model
+//subscribe to model
 view._model.subscribe(view.redrawTable)

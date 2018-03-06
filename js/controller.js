@@ -2,24 +2,28 @@
 
 
 function clickedOn() {
-  let name      = document.querySelector("#prodName").value,
-      qty       = document.querySelector("#prodQty").value,
-      priority  = document.querySelector("#prodPriority").value,
-      store     = document.querySelector("#prodStore").value,
-      section   = document.querySelector("#prodSection").value,
-      price     = document.querySelector("#prodPrice").value,
-      id        = shoppingCart._items.length;
+  let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],
+      id  = shoppingCart.items.length;
 
-  const item = new Item(id, name, qty, priority, store, section, price);
+  let vals = {}
+
+  for(var i of ids){
+    vals[i] = document.getElementById(i).value;
+  }
+
+  vals["id"] = id;
+
+  let item = new Item(vals.id, vals.prodName, vals.prodQty,
+                      vals.prodPriority, vals.prodStore,
+                      vals.prodSection, vals.prodPrice);
   shoppingCart.addItem(item)
-  // view.add2List(item)
 }
 
 function checkedBox() {
   this.parentElement.parentElement.classList.toggle("strike")
   var timeoutID;
 
-  for(var product of shoppingCart._items) {
+  for(var product of shoppingCart.items) {
     for(var property in product) {
       if (property === "_id") {
         if (product[property] == this.value) {

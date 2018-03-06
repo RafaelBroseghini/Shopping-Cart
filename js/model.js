@@ -1,3 +1,5 @@
+"use strict"
+
 class Subject {
   constructor() {
     this._handlers = [];
@@ -21,14 +23,16 @@ class Subject {
 // Item/Product Model.
 class Item {
   constructor(id, name, quantity, priority, store, section, price) {
-    this._purchased = false
-    this._id        = id
-    this._name      = name
-    this._quantity  = quantity
-    this._priority  = priority
-    this._store     = store
-    this._section   = section
-    this._price     = price
+    this._purchased = false;
+
+    this._id       = id;
+    this.name      = name;
+    this.quantity  = quantity;
+    this.priority  = priority;
+    this.store     = store;
+    this.section   = section;
+    this.price     = price;
+
   }
 }
 
@@ -36,16 +40,17 @@ class Item {
 class Cart extends Subject {
   constructor() {
     super()
-    this._items = [];
+    this.items = [];
+    this.oldItems = [];
   }
 
   addItem(elem) {
-    this._items.push(elem)
+    this.items.push(elem)
     this.publish("Added Item", this)
   }
 
   deleteItem(elem) {
-    this._items.splice(this._items.indexOf(elem), 1)
+    this.items.splice(this.items.indexOf(elem), 1)
     this.publish("Deleted Item", this)
   }
 }
