@@ -10,12 +10,19 @@ td {
   margin-top: 7em;
 }
 
-.hidden {
-  display: none;
+.low {
+  background-color: #aed581;
+  opacity: 0.8;
 }
 
-.prioritize {
-  display: none;
+.medium {
+  background-color: #fff176;
+  opacity: 0.8;
+}
+
+.high{
+  background-color: #f44336;
+  opacity: 0.8;
 }
 
 .strike {
