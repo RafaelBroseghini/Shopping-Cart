@@ -3,16 +3,12 @@
 
 function clickedOn() {
   let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],
-      id  = shoppingCart.items.length;
-
+      id  = Math.random()*Math.random()*Math.random();
   let vals = {}
-
   for(var i of ids){
     vals[i] = document.getElementById(i).value;
   }
-
   vals["id"] = id;
-
   let item = new Item(vals.id, vals.prodName, vals.prodQty,
                       vals.prodPriority, vals.prodStore,
                       vals.prodSection, vals.prodPrice);
