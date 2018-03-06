@@ -2,7 +2,7 @@
 
 This repository includes a shopping List application built during several weeks of our CS330 course.
 
-##Topics Included:
+## Topics Included:
   * Bootstrap Framework Integration
   * Event Handling
   * MVC Design Pattern
