@@ -55,4 +55,4 @@ class Cart extends Subject {
   }
 }
 
-var shoppingCart = new Cart();
+// var shoppingCart = new Cart();

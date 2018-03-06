@@ -61,8 +61,8 @@ class View {
   }
 }
 
-var view = new View(shoppingCart);
+// var view = new View(shoppingCart);
 
 
 //subscribe to model
-view._model.subscribe(view.redrawTable)
+// view._model.subscribe(view.redrawTable)
