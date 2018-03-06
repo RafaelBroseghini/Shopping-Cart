@@ -4,7 +4,6 @@
 function clickedOn() {
   let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],
       id  = Math.random()*Math.random();
-      
   let vals = {}
   for(var i of ids){
     vals[i] = document.getElementById(i).value;
