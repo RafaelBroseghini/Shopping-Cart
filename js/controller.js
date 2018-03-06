@@ -1,4 +1,5 @@
 var shoppingCart = new Cart();
+
 var view = new View(shoppingCart);
 view._model.subscribe(view.redrawTable)
 
