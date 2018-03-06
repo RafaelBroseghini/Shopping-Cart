@@ -36,8 +36,8 @@ class View {
           cb.onclick = checkedBox;
           rowCol.appendChild(cb)
           row.appendChild(rowCol)
-          cb.value = product["_id"]
-        } else if (property == "_id") {
+          cb.value = product["id"]
+        } else if (property == "id") {
           let rowCol = document.createElement("td")
           rowCol.className = "hidden"
           rowCol.textContent = product[property]

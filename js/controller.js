@@ -26,7 +26,7 @@ function checkedBox() {
   var timeoutID;
 
   for(var product of shoppingCart.items) {
-    if (product["_id"] == this.value) {
+    if (product["id"] == this.value) {
       product["_purchased"] = !product["_purchased"]
       if (product["_purchased"] === true) {
         startTimeOut(product)

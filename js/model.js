@@ -2,17 +2,17 @@
 
 class Subject {
   constructor() {
-    this._handlers = [];
+    this.handlers = [];
   }
 
   subscribe(fn) {
-    this._handlers.push(fn);
+    this.handlers.push(fn);
   }
 
   publish(msg, someobj){
     var scope = someobj || window;
 
-    for (let fn of this._handlers){
+    for (let fn of this.handlers){
       console.log(msg);
       fn(scope, msg)
     }
@@ -25,7 +25,7 @@ class Item {
   constructor(id, name, quantity, priority, store, section, price) {
     this._purchased = false;
 
-    this._id       = id;
+    this.id        = id;
     this.name      = name;
     this.quantity  = quantity;
     this.priority  = priority;
