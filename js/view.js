@@ -1,21 +1,38 @@
 
 class View {
   constructor(model) {
+    //Subscribe to shoppingCart model passing redrawTable.
+    //Every time that a change is made to the model
+    //the view calls functions in models handlers, which in
+    //this case redraws the table.
     model.subscribe(this.redrawTable.bind(this))
   }
 
-  colorByPriority() {
-    let colorPriorities = document.querySelectorAll(".prioritize");
+  makeRow(it) {
+      let row = document.createElement("tr")
+      row.className = it["priority"]
 
-    for (let i of colorPriorities){
-      if (i.textContent === "3") {
-        i.parentElement.classList.add("alert-danger")
-      } else if (i.textContent === "2") {
-        i.parentElement.classList.add("alert-warning")
-      } else {
-        i.parentElement.classList.add("alert-success")
+      let rowCol = document.createElement("td")
+      let cb = document.createElement("input")
+      cb.type = "checkbox"
+      cb.onclick = checkedBox;
+      cb.id = it["id"];
+
+      rowCol.appendChild(cb)
+      row.appendChild(rowCol)
+
+      var interestedIds = ["name","quantity", "store", "section", "price"];
+
+      for(var property of interestedIds){
+        let rowCol = document.createElement("td")
+        rowCol.textContent = it[property]
+        row.appendChild(rowCol)
       }
-    }
+      return row
+  }
+
+  addRow(parent, child) {
+    parent.appendChild(child)
   }
 
   redrawTable(shoppingCart, msg) {
@@ -25,42 +42,8 @@ class View {
     tbBody.textContent = "";
 
     for(var product of shoppingCart.items){
-      let row = document.createElement("tr")
-      for(var property in product){
-        if (property == "_purchased") {
-          let rowCol = document.createElement("td")
-          var cb = document.createElement("input")
-          cb.type = 'checkbox'
-          cb.onclick = checkedBox;
-          rowCol.appendChild(cb)
-          row.appendChild(rowCol)
-          cb.value = product["id"]
-        } else if (property == "id") {
-          let rowCol = document.createElement("td")
-          rowCol.className = "hidden"
-          rowCol.textContent = product[property]
-          row.appendChild(rowCol)
-        } else if (property == "priority") {
-          let rowCol = document.createElement("td")
-          rowCol.className = "prioritize"
-          rowCol.textContent = product[property]
-          row.appendChild(rowCol)
-        }
-          else {
-          let rowCol = document.createElement("td")
-          rowCol.textContent = product[property]
-          row.appendChild(rowCol)
-        }
-      }
-      tbBody.appendChild(row)
-      view.colorByPriority();
-      form.reset();
+      this.addRow(tbBody, this.makeRow(product))
     }
+    form.reset();
   }
 }
-
-// var view = new View(shoppingCart);
-
-
-//subscribe to model
-// view._model.subscribe(view.redrawTable)
