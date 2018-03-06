@@ -1,9 +1,9 @@
+var dummyStores   = ["Walmart","Target","Cotsco","Price Chopper", "Quillins"],
+    dummySections = ["Produce", "Canned Goods", "Fruits", "Meat", "Dairy", "Deli"];
+
 var shoppingCart = new Cart();
 
 var view = new View(shoppingCart);
-view._model.subscribe(view.redrawTable)
-
-
 
 function clickedOn() {
   let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],

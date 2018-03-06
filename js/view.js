@@ -1,9 +1,7 @@
-// var dummyStores   = ["Walmart","Target","Cotsco","Price Chopper", "Quillins"],
-//     dummySections = ["Produce", "Canned Goods", "Fruits", "Meat", "Dairy", "Deli"];
 
 class View {
   constructor(model) {
-    this._model = model
+    model.subscribe(this.redrawTable.bind(this))
   }
 
   colorByPriority() {
@@ -20,13 +18,13 @@ class View {
     }
   }
 
-  redrawTable(scope) {
+  redrawTable(shoppingCart, msg) {
     let form = document.querySelector("form")
     let tbBody = document.querySelector("#prodTableBody")
 
     tbBody.textContent = "";
 
-    for(var product of scope.items){
+    for(var product of shoppingCart.items){
       let row = document.createElement("tr")
       for(var property in product){
         if (property == "_purchased") {
