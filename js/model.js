@@ -46,6 +46,7 @@ class Cart extends Subject {
 
   addItem(elem) {
     this.items.push(elem)
+    //Publish calls fns in models handlers and passes msg.
     this.publish("Added Item", this)
   }
 
