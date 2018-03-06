@@ -16,24 +16,22 @@ function clickedOn() {
   let item = new Item(vals.id, vals.prodName, vals.prodQty,
                       vals.prodPriority, vals.prodStore,
                       vals.prodSection, vals.prodPrice);
+
   shoppingCart.addItem(item)
 }
 
 function checkedBox() {
+  console.log(this);
   this.parentElement.parentElement.classList.toggle("strike")
   var timeoutID;
 
   for(var product of shoppingCart.items) {
-    for(var property in product) {
-      if (property === "_id") {
-        if (product[property] == this.value) {
-          product["_purchased"] = !product["_purchased"]
-          if (product["_purchased"] === true) {
-            startTimeOut(product)
-          } else {
-            clearTimeOut()
-          }
-        }
+    if (product["_id"] == this.value) {
+      product["_purchased"] = !product["_purchased"]
+      if (product["_purchased"] === true) {
+        startTimeOut(product)
+      } else {
+        clearTimeOut()
       }
     }
   }
@@ -44,8 +42,8 @@ function startTimeOut(param1) {
   timeoutID = window.setTimeout(callDeleteItem, 2000, param1);
 }
 
-function callDeleteItem() {
-  shoppingCart.deleteItem()
+function callDeleteItem(param1) {
+  shoppingCart.deleteItem(param1)
 }
 
 function clearTimeOut() {
