@@ -60,7 +60,8 @@ class Cart extends Subject {
   }
 
   deleteItem(elem) {
-    this.items.splice(this.items.indexOf(elem), 1)
+    let idx = this.items.indexOf(elem)
+    this.items.splice(idx, 1)
     this.publish("Deleted Item", this)
   }
 }
