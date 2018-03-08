@@ -38,7 +38,6 @@ function checkedBox() {
 
 function sortList(col){
   let property = col.textContent.toLowerCase();
-  console.log(property);
   shoppingCart.sortItems(property)
 }
 
