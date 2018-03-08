@@ -21,8 +21,10 @@ class Subject {
 
 
 // Item/Product Model.
-class Item {
+class Item extends Subject {
   constructor(id, name, quantity, priority, store, section, price) {
+    super()
+
     this._purchased = false;
 
     this.id        = id;
@@ -36,7 +38,7 @@ class Item {
   }
 
   get purchased() {
-    return this._purchased
+    return this._purchased;
   }
 
   set purchased(nv) {
@@ -63,5 +65,15 @@ class Cart extends Subject {
     let idx = this.items.indexOf(elem)
     this.items.splice(idx, 1)
     this.publish("Deleted Item", this)
+  }
+
+  sortItems(property) {
+    this.items.sort(function(a,b) {
+      a = a[property].toLowerCase();
+      b = b[property].toLowerCase();
+      if( a == b) return 0;
+      return b < a ? -1 : 1;
+    });
+    this.publish("Sorted Items", this)
   }
 }
