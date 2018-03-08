@@ -1,15 +1,9 @@
 var dummyStores   = ["Walmart","Target","Cotsco","Price Chopper", "Quillins"],
     dummySections = ["Produce", "Canned Goods", "Fruits", "Meat", "Dairy", "Deli"];
 
-//Instances of Model and View classes.
-////////////////////////////////////
 var shoppingCart = new Cart();
-
 var view = new View(shoppingCart);
-///////////////////////////////////
 
-
-//Adds item to shoppingCart model.
 function clickedOn() {
   let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],
       id  = Math.random()* Math.random();
@@ -25,9 +19,7 @@ function clickedOn() {
   shoppingCart.addItem(item)
 }
 
-//Crosses off row and after two seconds deletes row if purchased=true.
 function checkedBox() {
-  console.log(this);
   this.parentElement.parentElement.classList.toggle("strike")
   var timeoutID;
 
@@ -44,7 +36,12 @@ function checkedBox() {
   }
 }
 
-//Function that waits two seconds and then calls model.deleteItem.
+function sortList(col){
+  let property = col.textContent.toLowerCase();
+  console.log(property);
+  shoppingCart.sortItems(property)
+}
+
 function startTimeOut(param1) {
   timeoutID = window.setTimeout(callDeleteItem, 2000, param1);
 }
@@ -57,7 +54,6 @@ function clearTimeOut() {
   window.clearTimeout(timeoutID);
 }
 
-//Populate select dropdowns from js file.
 function populateSelect(id, arr) {
   let selectDropDown = document.getElementById(id)
   for(var opt of arr){
