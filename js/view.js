@@ -18,8 +18,14 @@ class View {
       cb.onclick = checkedBox;
       cb.id = it["id"];
 
+
       rowCol.appendChild(cb)
       row.appendChild(rowCol)
+      
+      if (it.purchased) {
+        cb.checked = true;
+        row.className = "strike"
+      }
 
       var interestedIds = ["name","quantity", "store", "section", "price"];
 
