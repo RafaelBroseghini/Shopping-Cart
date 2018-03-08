@@ -65,5 +65,3 @@ class Cart extends Subject {
     this.publish("Deleted Item", this)
   }
 }
-
-// var shoppingCart = new Cart();
