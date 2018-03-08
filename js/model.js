@@ -34,6 +34,15 @@ class Item {
     this.price     = price;
 
   }
+
+  get purchased() {
+    return this._purchased
+  }
+
+  set purchased(nv) {
+    this._purchased = nv
+  }
+
 }
 
 // Shopping Cart Model.

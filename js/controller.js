@@ -33,8 +33,9 @@ function checkedBox() {
 
   for(var product of shoppingCart.items) {
     if (product["id"] == this.id) {
-      product["_purchased"] = !product["_purchased"]
-      if (product["_purchased"] === true) {
+      console.log(product.purchased);
+      product.purchased = !product.purchased
+      if (product.purchased === true) {
         startTimeOut(product)
       } else {
         clearTimeOut()
