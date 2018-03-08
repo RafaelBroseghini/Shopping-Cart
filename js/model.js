@@ -29,11 +29,11 @@ class Item extends Subject {
 
     this.id        = id;
     this.name      = name;
-    this.quantity  = quantity;
+    this.quantity  = Number(quantity);
     this.priority  = priority;
     this.store     = store;
     this.section   = section;
-    this.price     = price;
+    this.price     = Number(price);
 
   }
 
@@ -68,12 +68,18 @@ class Cart extends Subject {
   }
 
   sortItems(property) {
-    this.items.sort(function(a,b) {
-      a = a[property].toLowerCase();
-      b = b[property].toLowerCase();
-      if( a == b) return 0;
-      return b < a ? -1 : 1;
-    });
+    if (typeof(this.items[0][property]) == "string") {
+      this.items.sort(function(a,b) {
+        a = a[property].toLowerCase();
+        b = b[property].toLowerCase();
+        if( a == b) return 0;
+        return b < a ? -1 : 1;
+      });
+    } else {
+      this.items.sort(function(a, b){
+        return b[property] - a[property]
+      })
+    }
     this.publish("Sorted Items", this)
   }
 }
