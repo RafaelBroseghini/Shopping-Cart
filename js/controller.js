@@ -19,6 +19,10 @@ function clickedOn() {
   shoppingCart.addItem(item)
 }
 
+function showShoppingCart() {
+  shoppingCart.showCart()
+}
+
 function checkedBox() {
   this.parentElement.parentElement.classList.toggle("strike")
   var timeoutID;
