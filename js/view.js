@@ -21,7 +21,7 @@ class View {
 
       rowCol.appendChild(cb)
       row.appendChild(rowCol)
-      
+
       if (it.purchased) {
         cb.checked = true;
         row.className = "strike"
