@@ -1,5 +1,4 @@
 "use strict"
-
 class Subject {
   constructor() {
     this.handlers = [];
@@ -55,16 +54,56 @@ class Cart extends Subject {
     this.oldItems = [];
   }
 
-  addItem(elem) {
-    this.items.push(elem)
+  addItem(it) {
+    if (localStorage.getItem("Cart") == null) {
+      this.items.push(it)
+      let stringified = JSON.stringify(this.items)
+      localStorage.setItem("Cart",stringified)
+    } else {
+      var temp = JSON.parse(localStorage.getItem("Cart"));
+      this.items = [];
+
+      for(var prod of temp){
+        var newit = new Item(prod.id, prod.name,
+                             prod.quantity, prod.priority,
+                             prod.store, prod.section, prod.price)
+
+        this.items.push(newit)
+      }
+
+      this.items.push(it)
+      let stringified = JSON.stringify(this.items)
+      localStorage.setItem("Cart",stringified)
+    }
     //Publish calls fns in models handlers and passes msg.
     this.publish("Added Item", this)
   }
 
-  deleteItem(elem) {
-    let idx = this.items.indexOf(elem)
+  deleteItem(it) {
+    let idx = this.items.indexOf(it)
     this.items.splice(idx, 1)
+
+    let stringified = JSON.stringify(this.items)
+    localStorage.setItem("Cart",stringified)
+
     this.publish("Deleted Item", this)
+  }
+
+  showCart() {
+    var temp = JSON.parse(localStorage.getItem("Cart"));
+    this.items = [];
+
+    for(var prod of temp){
+      var newit = new Item(prod.id, prod.name,
+                           prod.quantity, prod.priority,
+                           prod.store, prod.section, prod.price)
+
+      this.items.push(newit)
+    }
+    
+    let stringified = JSON.stringify(this.items)
+    localStorage.setItem("Cart",stringified)
+    this.publish("Displaying Cart", this)
   }
 
   sortItems(property) {
