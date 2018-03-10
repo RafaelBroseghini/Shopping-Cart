@@ -90,20 +90,23 @@ class Cart extends Subject {
   }
 
   showCart() {
-    var temp = JSON.parse(localStorage.getItem("Cart"));
-    this.items = [];
+    if (localStorage.getItem("Cart") !== null) {
 
-    for(var prod of temp){
-      var newit = new Item(prod.id, prod.name,
-                           prod.quantity, prod.priority,
-                           prod.store, prod.section, prod.price)
+      var temp = JSON.parse(localStorage.getItem("Cart"));
+      this.items = [];
 
-      this.items.push(newit)
+      for(var prod of temp){
+        var newit = new Item(prod.id, prod.name,
+          prod.quantity, prod.priority,
+          prod.store, prod.section, prod.price)
+
+          this.items.push(newit)
+        }
+
+        let stringified = JSON.stringify(this.items)
+        localStorage.setItem("Cart",stringified)
+        this.publish("Displaying Cart", this)
     }
-    
-    let stringified = JSON.stringify(this.items)
-    localStorage.setItem("Cart",stringified)
-    this.publish("Displaying Cart", this)
   }
 
   sortItems(property) {

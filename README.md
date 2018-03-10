@@ -6,7 +6,9 @@ This repository includes a shopping List application using HTML5, CSS, Js built 
   * *Bootstrap Framework Integration*
   * *Event Handling*
   * *MVC Design Pattern*
-  
-  
+  * *JSON Manipulation*
+  * *Local Storage*
+
+
 ### Application's URL:
  * https://rafaelbroseghini.github.io/shoppingList_CS330/
