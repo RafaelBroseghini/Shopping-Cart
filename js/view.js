@@ -18,20 +18,22 @@ class View {
       cb.onclick = checkedBox;
       cb.id = it["id"];
 
+      // if (it.purchased) {
+      //   cb.checked = true;
+      // }
 
       rowCol.appendChild(cb)
       row.appendChild(rowCol)
-      
-      if (it.purchased) {
-        cb.checked = true;
-        row.className = "strike"
-      }
 
-      var interestedIds = ["name","quantity", "store", "section", "price"];
+
+      var interestedIds = ["name","quantity", "store", "section", "priority", "price"];
 
       for(var property of interestedIds){
         let rowCol = document.createElement("td")
         rowCol.textContent = it[property]
+        if (it.purchased == true) {
+          row.classList.add("strike")
+        }
         row.appendChild(rowCol)
       }
       return row
