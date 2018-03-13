@@ -36,37 +36,9 @@ function showShoppingCart() {
   shoppingCart.showCart()
 }
 
-function checkedBox() {
-  this.parentElement.parentElement.classList.toggle("strike")
-  var timeoutID;
-
-  for(var product of shoppingCart.items) {
-    if (product["id"] == this.id) {
-      product.purchased = !product.purchased
-      if (product.purchased === true) {
-        startTimeOut(product)
-      } else {
-        clearTimeOut()
-      }
-    }
-  }
-}
-
 function sortList(col){
   let property = col.textContent.toLowerCase();
   shoppingCart.sortItems(property)
-}
-
-function startTimeOut(param1) {
-  timeoutID = window.setTimeout(callDeleteItem, 2000, param1);
-}
-
-function callDeleteItem(param1) {
-  shoppingCart.deleteItem(param1)
-}
-
-function clearTimeOut() {
-  window.clearTimeout(timeoutID);
 }
 
 function populateSelect(id, arr) {
