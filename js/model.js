@@ -41,9 +41,15 @@ class Item extends Subject {
   }
 
   set purchased(nv) {
-    this._purchased = nv
+    if (this._purchased == false) {
+      this._purchased = nv
+      this.publish("Removed Item",this)
+    } else {
+      this._purchased = false;
+      clearTimeout(this.to)
+      this.publish("Added", this)
+    }
   }
-
 }
 
 // Shopping Cart Model.
@@ -56,6 +62,15 @@ class Cart extends Subject {
 
   addItem(it) {
     this.items.push(it)
+    let self = this;
+    it.subscribe(function(a,b) {
+      self.publish('removed_start', self)
+      if(it.purchased == true) {
+        it.to = setTimeout(function() {
+            self.deleteItem(it);
+        }, 2000)
+      }
+    });
     //Publish calls fns in models handlers and passes msg.
     this.publish("Added Item", this)
   }

@@ -15,8 +15,15 @@ class View {
       let rowCol = document.createElement("td")
       let cb = document.createElement("input")
       cb.type = "checkbox"
-      cb.onclick = checkedBox;
+      cb.onclick = function () {
+        it.purchased = !it.purchased
+      };
       cb.id = it["id"];
+
+      if (it.purchased) {
+        cb.checked = true;
+      }
+
       rowCol.appendChild(cb)
       row.appendChild(rowCol)
 
