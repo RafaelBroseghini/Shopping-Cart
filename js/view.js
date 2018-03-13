@@ -26,6 +26,9 @@ class View {
       for(var property of interestedIds){
         let rowCol = document.createElement("td")
         rowCol.textContent = it[property]
+        if (it.purchased == true) {
+          row.classList.add("strike")
+        }
         row.appendChild(rowCol)
       }
       return row
