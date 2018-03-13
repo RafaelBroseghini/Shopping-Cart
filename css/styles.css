@@ -11,17 +11,17 @@ td {
   margin-top: 7em;
 }
 
-.low {
+.Low {
   background-color: #aed581;
   opacity: 0.8;
 }
 
-.medium {
+.Medium {
   background-color: #fff176;
   opacity: 0.8;
 }
 
-.high{
+.Urgent{
   background-color: #f44336;
   opacity: 0.8;
 }

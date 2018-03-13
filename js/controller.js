@@ -3,6 +3,7 @@ var dummyStores   = ["Walmart","Target","Cotsco","Price Chopper", "Quillins"],
 
 var shoppingCart = new Cart();
 var view = new View(shoppingCart);
+var savelocal = new LocalStorageSaver(shoppingCart, "Cart")
 
 function clickedOn() {
   let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],
@@ -15,7 +16,7 @@ function clickedOn() {
   let item = new Item(vals.id, vals.prodName, vals.prodQty,
                       vals.prodPriority, vals.prodStore,
                       vals.prodSection, vals.prodPrice);
-
+  console.log("clicked");
   shoppingCart.addItem(item)
 }
 
@@ -29,7 +30,6 @@ function checkedBox() {
 
   for(var product of shoppingCart.items) {
     if (product["id"] == this.id) {
-      console.log(product.purchased);
       product.purchased = !product.purchased
       if (product.purchased === true) {
         startTimeOut(product)
