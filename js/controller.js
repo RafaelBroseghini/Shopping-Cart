@@ -2,12 +2,12 @@ var dummyStores   = ["Walmart","Target","Cotsco","Price Chopper", "Quillins"],
     dummySections = ["Produce", "Canned Goods", "Fruits", "Meat", "Dairy", "Deli"];
 
 var lastNumber = 0;
-var randomNumber = function () {
+function randomNumber() {
     var getRandomNumber = Math.random();
     if(getRandomNumber != lastNumber){
       return getRandomNumber
         lastNumber = getRandomNumber;
-    }else{
+    } else{
         randomNumber();
     }
 };
