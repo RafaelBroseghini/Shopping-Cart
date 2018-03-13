@@ -1,13 +1,25 @@
 var dummyStores   = ["Walmart","Target","Cotsco","Price Chopper", "Quillins"],
     dummySections = ["Produce", "Canned Goods", "Fruits", "Meat", "Dairy", "Deli"];
 
+var lastNumber = 0;
+var randomNumber = function () {
+    var getRandomNumber = Math.random();
+    if(getRandomNumber != lastNumber){
+      return getRandomNumber
+        lastNumber = getRandomNumber;
+    }else{
+        randomNumber();
+    }
+};
+
+
 var shoppingCart = new Cart();
 var view = new View(shoppingCart);
 var savelocal = new LocalStorageSaver(shoppingCart, "Cart")
 
 function clickedOn() {
   let ids = ["prodName","prodQty","prodPriority", "prodStore", "prodSection", "prodPrice"],
-      id  = Math.random()* Math.random();
+      id  = randomNumber();
   let vals = {}
   for(var i of ids){
     vals[i] = document.getElementById(i).value;
