@@ -32,8 +32,8 @@ function clickedOn() {
   shoppingCart.addItem(item)
 }
 
-function showShoppingCart() {
-  shoppingCart.showCart()
+function emptyShoppingCart() {
+  shoppingCart.emptyCart()
 }
 
 function sortList(col){

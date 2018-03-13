@@ -83,8 +83,9 @@ class Cart extends Subject {
     this.publish("Deleted Item", this)
   }
 
-  showCart() {
-    this.publish("Displaying Cart", this)
+  emptyCart() {
+    this.items = []
+    this.publish("Empty Cart", this)
   }
 
   sortItems(property) {
