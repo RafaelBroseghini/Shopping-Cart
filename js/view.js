@@ -18,7 +18,6 @@ class View {
       cb.onclick = function () {
         it.purchased = !it.purchased
       };
-      cb.id = it["id"];
 
       if (it.purchased) {
         cb.checked = true;

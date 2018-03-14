@@ -21,12 +21,11 @@ class Subject {
 
 // Item/Product Model.
 class Item extends Subject {
-  constructor(id, name, quantity, priority, store, section, price) {
+  constructor(name, quantity, priority, store, section, price) {
     super()
 
     this._purchased = false;
 
-    this.id        = id;
     this.name      = name;
     this.quantity  = Number(quantity);
     this.priority  = priority;
@@ -43,16 +42,14 @@ class Item extends Subject {
   set purchased(nv) {
     if (this._purchased == false) {
       this._purchased = nv
-      this.publish("Will remove this Item.",this)
+      this.publish("Will remove this Item",this)
     } else {
       this._purchased = false;
       clearTimeout(this.to)
-      this.publish("Did not remove this Item.", this)
+      this.publish("Did not remove this Item", this)
     }
   }
 }
-
-
 
 // Shopping Cart Model.
 class Cart extends Subject {
@@ -66,7 +63,7 @@ class Cart extends Subject {
     this.items.push(it)
     let self = this;
     it.subscribe(function(a,b) {
-      self.publish('Countdown 2s.', self)
+      self.publish('in 2s.', self)
       if(it.purchased == true) {
         it.to = setTimeout(function() {
             self.deleteItem(it);
@@ -74,18 +71,18 @@ class Cart extends Subject {
       }
     });
     //Publish calls fns in models handlers and passes msg.
-    this.publish("Added Item", this)
+    this.publish("Added Item: "+ it.name, this)
   }
 
   deleteItem(it) {
     let idx = this.items.indexOf(it)
     this.items.splice(idx, 1)
-    this.publish("Deleted Item", this)
+    this.publish("Deleted Item at index "+idx+".", this)
   }
 
   emptyCart() {
     this.items = []
-    this.publish("Empty Cart", this)
+    this.publish("You just emptied the Cart.", this)
   }
 
   sortItems(property) {
@@ -101,6 +98,6 @@ class Cart extends Subject {
         return b[property] - a[property]
       })
     }
-    this.publish("Sorted Items", this)
+    this.publish("Sorted Items in descending order on " + "'"+property+"'"+" column.", this)
   }
 }

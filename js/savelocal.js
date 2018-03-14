@@ -11,11 +11,11 @@ class LocalStorageSaver {
       let saved_lst = JSON.parse(localStorage.getItem(self.lsname))
       console.log(saved_lst);
       for(let it of saved_lst){
-        let newit = new Item(it.id, it.name,
+        let newit = new Item(it.name,
           it.quantity, it.priority,
           it.store, it.section, it.price)
 
-          model.addItem(newit)
+        model.addItem(newit)
         }
       }
   }
