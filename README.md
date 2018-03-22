@@ -10,6 +10,7 @@ This repository includes a shopping List application using HTML5, CSS, Js built 
 ### The application below includes server side integration instead of Local Storage.
 
 ### Application using Flask back end:
+* *This site will be disabled on Friday 22 June 2018*
 * http://tortellinibroseghini.pythonanywhere.com/
 
 ## Topics Included:
