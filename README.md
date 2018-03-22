@@ -8,6 +8,7 @@ This repository includes a shopping List application using HTML5, CSS, Js built 
   * *MVC Design Pattern*
   * *JSON Manipulation*
   * *Local Storage* | *Remote Storage*
+  * *Flask microframework server side*
 
 ### Application's URL:
  * https://rafaelbroseghini.github.io/shoppingList_CS330/
