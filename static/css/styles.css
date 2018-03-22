@@ -1,0 +1,71 @@
+html {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: #F7971E;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1  {
+  text-align: center;
+  font-family: "Cabin";
+  font-size: 5em;
+  letter-spacing: 5px;
+}
+
+table{
+  box-shadow: 8px 8px 8px grey;
+}
+
+thead {
+  font-family: "Cabin";
+  letter-spacing: 0.2em;
+  font-size: 1.5em;
+}
+
+td {
+  font-family: "Cabin";
+  letter-spacing: 0.2em;
+  font-size: 1.2em;
+}
+
+.container {
+  margin-top: 6em;
+}
+
+.jumbotron {
+  box-shadow: 8px 8px 8px grey;
+  font-family: "Cabin"
+}
+
+.Low {
+  background-color: #aed581;
+  opacity: 0.8;
+}
+
+.modal {
+  font-family: "Cabin";
+  font-size: 2em;
+}
+
+.Medium {
+  background-color: #fff176;
+  opacity: 0.8;
+}
+
+.None {
+  background-color: white;
+}
+
+.Urgent{
+  background-color: #f44336;
+  opacity: 0.8;
+}
+
+.strike {
+  text-decoration: line-through;
+}
