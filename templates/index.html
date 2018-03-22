@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Shopping List</h1>
+      <hr>
+      <div class="jumbotron">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="prodName">Product Name</label>
+              <input type="text" class="form-control" id="prodName" name="prodName" placeholder="Bananas" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="prodQty">Quantity</label>
+              <select type="select" class="form-control" id="prodQty" name="prodQty" placeholder="Choose Quantity" required>
+                <option value="" disabled selected>Choose Quantity:</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="prodPriority">Priority</label>
+              <select class="form-control" id="prodPriority" name="prodPriority" required>
+                <option value="" disabled selected>Choose Priority:</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="Urgent">High</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="prodStore">Store</label>
+              <select class="form-control" id="prodStore" name="prodStore" required>
+                <option value="" disabled selected>Choose Store:</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="prodSection">Section</label>
+              <select class="form-control" id="prodSection" name="prodSection" placeholder="Produce" required>
+                <option value="" disabled selected>Choose Section:</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="prodPrice">Price</label>
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control" id="prodPrice" name="prodPrice" placeholder="1.99" required>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="clickedOn()" class="btn btn-dark float-left" data-toggle="tooltip" data-placement="bottom" title="Add to cart"><i class="fas fa-plus"></i></button>
+          <button type="button" class="btn btn-dark float-right" data-toggle="modal" data-target="#exampleModal" title="Empty Cart"><i class="fas fa-trash"></i> </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Do you want to empty your cart?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  This will remove all the items from your cart.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  <button type="button" onclick="emptyShoppingCart()" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="">
+        <table id="prodTable" class="table table-hover rounded">
+          <thead class="thead-dark">
+            <tr>
+              <th><i class="fas fa-check"></i></th>
+              <th scope="col" onclick="sortList(this)">Name</th>
+              <th scope="col" onclick="sortList(this)">Quantity</th>
+              <th scope="col" onclick="sortList(this)">Store</th>
+              <th scope="col" onclick="sortList(this)">Section</th>
+              <th scope="col" onclick="sortList(this)">Priority</th>
+              <th scope="col" onclick="sortList(this)">$/unit</th>
+            </tr>
+          </thead>
+          <tbody id="prodTableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/js/model.js"></script>
+    <script type="text/javascript" src="../static/js/view.js"></script>
+    <script type="text/javascript" src="../static/js/remoteStorage.js"></script>
+    <script type="text/javascript" src="../static/js/controller.js"></script>
+  </body>
+</html>
