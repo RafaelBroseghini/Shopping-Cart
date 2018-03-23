@@ -7,6 +7,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+
+# Closing the files ALMOST fixes weird behavior of file being overwritten.
+#If refresh is crazy fast it overwrites the file with less items in cart.
 @app.route("/savelist", methods=["POST"])
 def save():
     content = request.get_json()
