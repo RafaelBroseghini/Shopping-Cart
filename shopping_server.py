@@ -20,7 +20,8 @@ def getList():
     with open("remotestorage.txt","r") as f:
         data = f.read()
     f.close()
-    return Response(data)
+    res = Response(data)
+    return res
 
 
 app.run(debug=True, port=5001)
