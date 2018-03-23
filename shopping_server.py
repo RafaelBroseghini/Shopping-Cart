@@ -10,14 +10,20 @@ def index():
 @app.route("/savelist", methods=["POST"])
 def save():
     content = request.get_json()
-    with open("remotestorage.txt", "w") as f:
-        f.write(json.dumps(content))
+    text = open("remotestorage.txt","w")
+    text.write(json.dumps(content))
+    text.close()
+
+    # with open("remotestorage.txt", "w") as f:
+        # f.write(json.dumps(content))
     return redirect(url_for("index"))
 
 @app.route("/getlist")
 def getList():
-    with open("remotestorage.txt","r") as f:
-        data = f.read()
+    text = open("remotestorage.txt","r+")
+    # with open("remotestorage.txt","r") as f:
+    data = text.read()
+    text.close()
     return data
 
 
