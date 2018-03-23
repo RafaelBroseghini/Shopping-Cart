@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, render_template, redirect, url_for
+from flask import Flask, Response, request, render_template, redirect, url_for, jsonify
 import json
 
 app = Flask(__name__)
@@ -11,7 +11,7 @@ def index():
 def save():
     content = request.get_json()
     with open("remotestorage.txt", "w") as f:
-        f.write(json.dumps(content))
+        data = f.write(json.dumps(content))
     f.close()
     return redirect(url_for("index"))
 
@@ -20,7 +20,7 @@ def getList():
     with open("remotestorage.txt","r") as f:
         data = f.read()
     f.close()
-    return data
+    return Response(data)
 
 
 app.run(debug=True, port=5001)

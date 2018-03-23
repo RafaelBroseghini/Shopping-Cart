@@ -33,11 +33,6 @@ class RemoteStorage {
     config.headers = {"Content-Type": "application/json",
                       "Accept": "application/json"}
 
-    fetch("/savelist", config).then(function(response){
-      return response.text()
-    })
-    .then(function(data){
-      return data
-    })
+    fetch("/savelist", config)
   }
 }
