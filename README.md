@@ -5,7 +5,7 @@ This repository includes a shopping List application using HTML5, CSS, Js built 
 ### The application below does not include server side integration. Only up until Local Storage.
 
 ### Application's URL:
-* https://rafaelbroseghini.github.io/shoppingList_CS330/
+* https://rafaelbroseghini.github.io/Shopping-Cart/
 
 ### The application below includes server side integration instead of Local Storage.
 
